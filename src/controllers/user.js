@@ -12,9 +12,13 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-     // Body: onde recebemos os dados
-     const user = await createUser(req.body);
-     res.status(201).send(user);
+     try {
+          // Body: onde recebemos os dados
+          const user = await createUser(req.body);
+          res.status(201).send(user);
+     } catch(err) {
+          res.status(400).send(err);
+     }
 })
 
 router.delete('/', (req, res) => {
