@@ -1,13 +1,22 @@
 
 // Controller Usuário: vai ficar responsável pelas rotas do usuário.
 
-// import { Router } from 'express';
-const Router = require('express'); // Função para criar o controller
+import { Router } from 'express'; // Função para criar o controller
+import { listUsers, createUser } from '../services/user.js';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-     res.send('OK');
+router.get('/', async (req, res) => {
+     const userList = await listUsers();
+     res.send(userList);
 })
 
-module.exports = router;
+router.post('/', (req, res) => {
+     res.send('POST USER');
+})
+
+router.delete('/', (req, res) => {
+     res.send('DELETE USER');
+})
+
+export default router;

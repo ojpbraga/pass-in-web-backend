@@ -1,5 +1,5 @@
-const express = require('express');
-const userController = require('./controllers/user')
+import express from 'express';
+import userController from './controllers/user.js';
 
 const app = express(); // Função que cria o app
 const PORT = 3000;
