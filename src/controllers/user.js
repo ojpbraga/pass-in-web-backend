@@ -2,7 +2,7 @@
 // Controller Usuário: vai ficar responsável pelas rotas do usuário.
 
 import { Router } from 'express'; // Função para criar o controller
-import { listUsers, createUser } from '../services/user.js';
+import { listUsers, createUser, deleteUser, updateUser } from '../services/user.js';
 
 const router = Router();
 
@@ -15,14 +15,21 @@ router.post('/', async (req, res) => {
      try {
           // Body: onde recebemos os dados
           const user = await createUser(req.body);
-          res.status(201).send(user);
+          res.send(user);
      } catch(err) {
           res.status(400).send(err);
      }
 })
 
-router.delete('/', (req, res) => {
-     res.send('DELETE USER');
+//             Variável da rota
+router.delete('/:userId', async (req, res) => {
+     await deleteUser(req.params.userId);
+     res.send();
+})
+
+router.put('/:userId', async (req, res) => {
+     await updateUser(req.params.userId, req.body);
+     res.send();
 })
 
 export default router;

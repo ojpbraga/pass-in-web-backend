@@ -13,3 +13,13 @@ export const createUser = async (user) => {
 
     return createUser;
 }
+
+export const deleteUser = async (id) => {
+    await databaseConnection();
+    await User.findByIdAndDelete(id);
+}
+
+export const updateUser = async (id, newBody) => {
+    await databaseConnection();
+    await User.findByIdAndUpdate(id, newBody);
+}
