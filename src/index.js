@@ -1,8 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import userController from './controllers/user.js';
+import cors from 'cors';
 
 const app = express(); // Função que cria o app
+app.use(cors());
 const PORT = 3000;
 
 app.use(bodyParser.json()); // Transforma os dados do body (recebidos do usuário) em json, para conseguirmos trabalhar
