@@ -11,8 +11,10 @@ router.get('/', async (req, res) => {
      res.send(userList);
 })
 
-router.post('/', (req, res) => {
-     res.send('POST USER');
+router.post('/', async (req, res) => {
+     // Body: onde recebemos os dados
+     const user = await createUser(req.body);
+     res.status(201).send(user);
 })
 
 router.delete('/', (req, res) => {

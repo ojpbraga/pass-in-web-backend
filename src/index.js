@@ -1,8 +1,11 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import userController from './controllers/user.js';
 
 const app = express(); // Função que cria o app
 const PORT = 3000;
+
+app.use(bodyParser.json()); // Transforma os dados do body (recebidos do usuário) em json, para conseguirmos trabalhar
 
 // Quando ele receber um get (suponhamos, do formulário), tomará esta ação
 
